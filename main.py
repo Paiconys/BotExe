@@ -4,12 +4,12 @@ from aiogram.types import ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeybo
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from cfg import TOKEN
 import random
 import requests
 import configparser
 
 
+TOKEN = '5728419108:AAG0lftDcoVEy22sGE8X-yv1bxWnMw7-R_M'
 
 
 config = configparser.ConfigParser()
