@@ -9,6 +9,9 @@ import random
 import requests
 import configparser
 
+
+
+
 config = configparser.ConfigParser()
 config.read("config.ini")
 bot = Bot(token=TOKEN)
@@ -21,10 +24,10 @@ inkb = InlineKeyboardMarkup(row_width=2).add(InlineKeyboardButton(text='Ранд
                                              InlineKeyboardButton(text='Рассписание', callback_data='schedule'),
                                              InlineKeyboardButton(text='Кол-во сообщений всех участников',
                                                                   callback_data='faggot'),
-                                             InlineKeyboardButton(text='Button1', callback_data='1'),
+                                             InlineKeyboardButton(text='Игра жизнь', callback_data='1'),
                                              InlineKeyboardButton(text='Button2',
                                                                   callback_data='2'),
-                                             InlineKeyboardButton(text='Button3', callback_data='3'),
+                                             InlineKeyboardButton(text='какие есть команды', callback_data='3'),
                                              InlineKeyboardButton(text='Button4',
                                                                   callback_data='4'),
                                              InlineKeyboardButton(text='Button5', callback_data='5'),
@@ -37,20 +40,20 @@ inkb = InlineKeyboardMarkup(row_width=2).add(InlineKeyboardButton(text='Ранд
 
 @dp.message_handler(commands=['start'])
 async def command_godota(message: types.Message):
-    await bot.send_message(message.chat.id, 'Сасите я бот а вы нет, ахахахахах', reply_markup=inkb)
+    await bot.send_message(message.chat.id, 'Я бот', reply_markup=inkb)
     while True:
         if message.chat.id != -1001817701706:
             await bot.forward_message(message.chat.id, -1001370851345, message.message_id)
             break
         else:
-            await asyncio.sleep(180)
+            await asyncio.sleep(20)
             reg = requests.get("https://api.thecatapi.com/v1/images/search")
             reg = (reg.json())
             reg = (reg[0].get('url'))
             await bot.send_photo(chat_id=message.chat.id, photo=reg)
-            await asyncio.sleep(180)
-            copypaste = ['рандомный крпипаст 1', 'черный маг', 'рандомный крпипаст 2', 'рандомный крпипаст3',
-                         'рандомный крпипаст 4']
+            await asyncio.sleep(20)
+            copypaste = ['рандомный копипаст 1', 'черный маг', 'рандомный копипаст 2', 'рандомный копипаст3',
+                         'рандомный копипаст 4']
             await bot.send_message(chat_id=message.chat.id, text=copypaste[random.randint(0, 4)])
 
 
@@ -93,8 +96,58 @@ async def command_godota(callback: types.CallbackQuery):
 
 
 @dp.message_handler(commands=['godota'])
-async def command_godota(message: types.Message):
-    await bot.send_poll(chat_id=message.chat.id, question='Go Dota?', options=['yes', 'no'])
+async def command_godota(message : types.Message):
+        await bot.send_poll(chat_id=message.chat.id,question='Go Dota?',options=['yes','no'])
+
+
+
+@dp.callback_query_handler(text='schedule')
+async def command_godota(callback: types.CallbackQuery):
+    await callback.message.answer('расписание не найдено')
+
+
+
+@dp.callback_query_handler(text='faggot')
+async def command_godota(callback: types.CallbackQuery):
+    await callback.message.answer('Больше одного')
+
+
+@dp.callback_query_handler(text='1')
+async def command_godota(callback: types.CallbackQuery):
+    await callback.message.answer('Вся жизнь умерла вы проиграли')
+
+@dp.callback_query_handler(text='2')
+async def command_godota(callback: types.CallbackQuery):
+    await callback.message.answer('Работает')
+
+@dp.callback_query_handler(text='3')
+async def command_godota(callback: types.CallbackQuery):
+    await callback.message.answer('/godota')
+
+
+@dp.callback_query_handler(text='4')
+async def command_godota(callback: types.CallbackQuery):
+    await callback.message.answer('Работает')
+
+@dp.callback_query_handler(text='5')
+async def command_godota(callback: types.CallbackQuery):
+    await callback.message.answer('Работает')
+
+
+@dp.callback_query_handler(text='6')
+async def command_godota(callback: types.CallbackQuery):
+    await callback.message.answer('Работает')
+
+
+@dp.callback_query_handler(text='7')
+async def command_godota(callback: types.CallbackQuery):
+    await callback.message.answer('Работает')
+
+
+@dp.callback_query_handler(text='8')
+async def command_godota(callback: types.CallbackQuery):
+    await callback.message.answer('Работает')
+
 
 
 
