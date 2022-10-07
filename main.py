@@ -42,10 +42,7 @@ inkb = InlineKeyboardMarkup(row_width=2).add(InlineKeyboardButton(text='Ранд
 async def command_godota(message: types.Message):
     await bot.send_message(message.chat.id, 'Я бот', reply_markup=inkb)
     while True:
-        if message.chat.id != -1001817701706:
-            await bot.forward_message(message.chat.id, -1001370851345, message.message_id)
-            break
-        else:
+
             await asyncio.sleep(20)
             reg = requests.get("https://api.thecatapi.com/v1/images/search")
             reg = (reg.json())
